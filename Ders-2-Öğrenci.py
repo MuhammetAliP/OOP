@@ -39,9 +39,8 @@ ogrenci1 = Ogrenci("Ali", "Percin", "15472653289", "25.01.2003", "Yonetim Bilisi
 ogrenci_bilgileri = []
 
 def verileri_yukle():
-    ogrenci_bilgileri.clear()
     if os.path.exists("ogrenci_bilgileri.json"):
-        with open("ogrenci_bilgileri.json", "r") as dosya:
+        with open("ogrenci_bilgileri.json", "r", encoding="utf-8") as dosya:
             veri = json.load(dosya)
             for item in veri:
                 ogr = Ogrenci(
@@ -62,7 +61,7 @@ def verileri_kaydet():
     veri = [ogr.sozluk_yap() for ogr in ogrenci_bilgileri]
     with open ("ogrenci_bilgileri.json", "w", encoding="utf-8") as dosya:
         json.dump(veri, dosya, ensure_ascii=False, indent=4)
-        print("Öğrenci bilgileri dosyaya kaydedildi.")
+    print("Öğrenci bilgileri dosyaya kaydedildi.")
 
 
 
